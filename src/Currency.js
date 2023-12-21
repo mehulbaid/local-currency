@@ -8,7 +8,7 @@ class Currency {
   }
 
   static getCode(timeZone) {
-    return window?._LocalCurrencyCode || timezoneToCurrency[timeZone || Currency.timeZone()] || 'USD'
+    return timezoneToCurrency[timeZone || Currency.timeZone()] || 'USD'
   }
 
   static getCacheKey(currency) {
