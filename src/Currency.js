@@ -3,12 +3,12 @@ import timezoneToCurrency from './timezoneToCurrency'
 class Currency {
   constructor({ amount, code, timeZone = Currency.timeZone() }) {
     this.amount = amount
-    this.code = code || window._LocalCurrencyCode || Currency.getCode(timeZone)
+    this.code = code || (window && window._LocalCurrencyCode) || Currency.getCode(timeZone)
     this.timeZone = timeZone
   }
 
   static getCode(timeZone) {
-    return window._LocalCurrencyCode || timezoneToCurrency[timeZone || Currency.timeZone()] || 'USD'
+    return window?._LocalCurrencyCode || timezoneToCurrency[timeZone] || Currency.timeZone()] || 'USD'
   }
 
   static getCacheKey(currency) {
