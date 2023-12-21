@@ -429,7 +429,7 @@ function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]
 class Currency {
   constructor({ amount, code, timeZone = Currency.timeZone() }) {
     this.amount = amount;
-    this.code = code || (window && window._LocalCurrencyCode) || Currency.getCode(timeZone);
+    this.code = code || Currency.getCode(timeZone);
     this.timeZone = timeZone;
   }
 
